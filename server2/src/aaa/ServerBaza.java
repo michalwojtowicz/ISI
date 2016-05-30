@@ -324,16 +324,30 @@ public class ServerBaza {
 		stm.executeUpdate(sql);
 	}
 	
+	public static int getCountNumerTelefonu() throws SQLException{
+		String sql = "select cout(Nr_Telefonu) from klient;";
+		int wynik = 0;
+		Statement stm = (Statement) connect.createStatement();
+		ResultSet result = stm.executeQuery(sql);
+		if(!result.next()){
+			return 0;
+		}else{
+			wynik = result.getInt(1);
+			return wynik;
+		}		
+	}
+	
 	public static String getNumerTelefonu() throws SQLException{
 		String sql = "select Nr_Telefonu from klient;";
 		String wynik = "";
-		System.err.println("halo");
 		Statement stm = (Statement) connect.createStatement();
 		ResultSet result = stm.executeQuery(sql);
 		if(!result.next()){
 			return "blad";
 		}else{
-			wynik += result.getString(1);
+			for(int i=1; i<=getCountNumerTelefonu(); i++){
+				wynik += result.getString(i)+";";
+			}
 			System.err.println(wynik);
 			return wynik;
 		}		
