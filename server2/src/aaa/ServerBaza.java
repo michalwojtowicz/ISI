@@ -325,7 +325,7 @@ public class ServerBaza {
 	}
 	
 	public static int getCountNumerTelefonu() throws SQLException{
-		String sql = "select cout(Nr_Telefonu) from klient;";
+		String sql = "select count(Nr_Telefonu) from klient;";
 		int wynik = 0;
 		Statement stm = (Statement) connect.createStatement();
 		ResultSet result = stm.executeQuery(sql);
