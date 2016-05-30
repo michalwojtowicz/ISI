@@ -34,13 +34,6 @@ public class HtmlCreator extends HttpServlet {
 		String strona = request.getParameter("strona");
 		strona = Strona.prasujStrone(strona, "glowna;dodajSamochody;historia;uWizyta;wolneTerminy");
 		
-		try {
-			out.print(ServerBaza.getNumerTelefonu());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		if (strona.equals("blad")){
 			
 			response.sendError(HttpServletResponse.SC_NOT_FOUND, "Nie znaleziono elemetu");
@@ -51,7 +44,12 @@ public class HtmlCreator extends HttpServlet {
 			
 			out.println(Strona.getClientHtml(Strona.historia()));
 		} else if (strona.equals("uWizyta")){
-			
+			try {
+				out.print(ServerBaza.getNumerTelefonu());
+			} catch (SQLException e) {
+				out.println("chuja chuja");
+				e.printStackTrace();
+			}
 			out.println(Strona.getClientHtml(Strona.uWizyta()));
 		} else if (strona.equals("wolneTerminy")){
 			
