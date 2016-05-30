@@ -86,6 +86,42 @@ public class Strona {
 	}
 
 	public static String glowna() {
+		StringBuffer out = new StringBuffer();
+
+		out.append("<font color = \"#6a8a24\" size = 15 > login </font>\n");
+		out.append("<form action=\"login\">  \n");
+		out.append("Email<br>\n");
+		out.append("<input type=\"text\" name=\"login\"> <br>\n");
+		out.append("haslo<br>\n");
+		out.append("<input type=\"text\" name=\"haslo\">\n");
+		out.append("<input type=\"submit\" value=\"login\">\n");
+		out.append("</form>  \n");
+		out.append("<input id=\"btntest\" type=\"button\" value=\"Zarejestruj sie\"\n");
+		out.append("onclick=\"return btntest_onclick()\" />\n");
+
+		out.append("<script>\n");
+		out.append("function clearDoc() {\n");
+		out.append("document.getElementById(\"demo\").innerHTML = \"<h2>Nothing</h2>\";\n");
+		out.append("}\n");
+		out.append("function myFunction(arr) {\n");
+		out.append("var out = \"\";\n");
+		out.append("var i;\n");
+		out.append("out = arr.imie;\n");
+		out.append("document.getElementById(\"demo\").innerHTML = out;\n");
+		out.append("}\n");
+		out.append("function btntest_onclick()\n");
+		out.append("{\n");
+		out.append("window.location.href = \"rejestracja.html\";\n");
+		out.append("}\n");
+		out.append("function client(){\n");
+		out.append("window.location.href = \"Client.html\";\n");
+		out.append("}\n");
+
+		out.append("</script>\n");
+
+		return out.toString();
+	}
+	public static String client() {
 
 		StringBuffer out = new StringBuffer();
 
