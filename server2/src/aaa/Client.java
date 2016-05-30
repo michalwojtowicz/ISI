@@ -21,6 +21,9 @@ import aaa.ServerBaza;
 /**
  * Servlet implementation class Client
  */
+
+//@WebServlet(name = "HelloWorldServlet", urlPatterns = {"/hws"})
+
 public class Client extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
