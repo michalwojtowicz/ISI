@@ -158,10 +158,14 @@ public class Strona {
 		StringBuffer out = new StringBuffer();
 		
 		//SmsSender sms= new SmsSender("aaa","603955840");
+		ClientDb db=new ClientDb();
+		String numer=db.getNumery();
+		
 		
 		out.append("<font color = \"#EFEFEF\">");
 		out.append("<div id=\"demo\"><h2>Wprowadü dane samochodu</h2></div>\n");
 		out.append("<center>");
+		out.append("numer");
 		out.append("VIN<br><input type=\"text\" id=\"VIN\"><br><br>\n");
 		out.append("Marka<br><input type=\"text\" id=\"Marka\"><br><br>\n");
 		out.append("Model<br><input type=\"text\" id=\"model\"><br><br>\n");
