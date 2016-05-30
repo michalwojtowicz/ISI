@@ -121,6 +121,112 @@ public class Strona {
 
 		return out.toString();
 	}
+
+	private static String rejestracja() {
+	StringBuffer out = new StringBuffer();
+	
+	out.append("<div id=\"container\" top-margin=\"10px\">\n");
+			out.append("<div id=\"logo\">\n");
+					out.append("<img src=\"logo.png\">\n");
+							out.append("</div>\n");
+									out.append("<div id=\"con\">\n");
+											out.append("<div id=\"nav\">\n");
+													out.append("<center>\n");
+															out.append("<br>\n");
+																	out.append("<a href=\"strona.html\" class=\"button\">Strona g³ówna</a><br><br><br>\n");
+																			out.append("<a href=\"index.html\" class=\"button\">Ekran logowania</a><br><br><br>\n");
+																					out.append("out.append(\"<a href=\"Client.html\" class=\"button\">Powrót</a><br><br><br>\n");
+																					out.append("</center>\n");
+																							out.append("</div>\n");
+	
+																									out.append("	<div id=\"news\">\n");
+																											out.append("<img src=\"reklama.png\">\n");
+																													out.append("</div>\n");
+	
+																															out.append("<div id=\"content\">\n");
+																																	out.append("<center>\n");
+																																			out.append("<font color = \"#EFEFEF\">\n");
+																																					out.append("<h2>Rejestracja nowego klienta</h2>\n");
+																																							out.append("<h4>\n");
+																																									out.append("PESEL<br>\n");
+																																											out.append("<input type=\"text\" id=\"PESEL\" value=\"\"> <br><br>\n");
+																																													out.append("Imiê<br>\n");
+																																															out.append("<input type=\"text\" id=\"imie\" value=\"\"> <br><br>\n");
+																																																	out.append("Nazwisko<br>\n");
+																																																			out.append("<input type=\"text\" id=\"nazwisko\" value=\"\"><br><br>\n");
+																																																					out.append("Miejscowoœæ<br>\n");
+																																																							out.append("<input type=\"text\" id=\"miejscowosc\" value=\"\"><br><br>\n");
+																																																									out.append("Kod pocztowy<br>\n");
+																																																											out.append("<input type=\"text\" id=\"kodp\" value= \"\"><br><br>\n");
+																																																													out.append("Numer telefonu<br>\n");
+																																																															out.append("<input type=\"text\" id=\"nrt\" value=\"\"><br><br>\n");
+																																																																	out.append("E-mail<br>\n");
+																																																																			out.append("<input type=\"text\" id=\"email\" value=\"\"><br><br>\n");
+																																																																					out.append("Has³o<br>\n");
+																																																																							out.append("<input type=\"text\" id=\"haslo\" value=\"\"><br>\n");
+																																																																									out.append("</h4>\n");
+																																																																											out.append("</font>\n");
+																																																																													out.append("<br>\n");
+																																																																															out.append("<button type=\"button\" class=\"button\" onclick=\"loadDoc()\">Zarejestruj</button><br><br>\n");
+																																																																																	out.append("<input id=\"btntest\" class=\"button\" type=\"button\" value=\"Logowanie\"\n"); 
+																																																																																			out.append("onclick=\"return btntest_onclick()\" />\n");
+
+
+																																																																																					out.append("</center>\n");
+																																																																																							out.append("</font>\n");
+																																																																																									out.append("</div>\n");
+																																																																																											out.append("</div>\n");
+																																																																																													out.append("<div id=\"footer\">\n");
+																																																																																															out.append("@In¿ynieria Systemów Informacyjnych 2016\n");
+																																																																																																	out.append("</div>\n");
+																																																																																																			out.append("</div>\n");
+																																																																																																					out.append("</font>\n");
+
+																																																																																																							out.append("<script>\n");
+																																																																																																									out.append("function loadDoc() {\n");
+																																																																																																											out.append("var haslo = document.getElementById(\"haslo\").value;\n");
+																																																																																																													out.append("var email = document.getElementById(\"email\").value\n");
+																																																																																																															out.append("var kodp = document.getElementById(\"kodp\").value;\n");
+																																																																																																																	out.append("var PESEL = document.getElementById(\"PESEL\").value;\n");
+																																																																																																																			out.append("var imie = document.getElementById(\"imie\").value;\n");
+																																																																																																																					out.append("var nazwisko = document.getElementById(\"nazwisko\").value;\n");
+																																																																																																																							out.append("var nrt = document.getElementById(\"nrt\").value;\n");
+																																																																																																																									out.append("var miejscow = document.getElementById(\"miejscowosc\").value;\n");
+
+
+																																																																																																																											out.append("var xhttp = new XMLHttpRequest();\n");
+																																																																																																																													out.append("xhttp.onreadystatechange = function() {\n");
+																																																																																																																															out.append("if (xhttp.status == 200) {\n");
+																																																																																																																																	out.append("document.getElementById(\"demo\").innerHTML = xhttp.responseText;\n");
+																																																																																																																																			out.append("}\n");
+																																																																																																																																					out.append("};\n");
+																																																																																																																																							out.append("xhttp.open(\"POST\", \"users/rejestr\", true);\n");
+																																																																																																																																									out.append("xhttp.setRequestHeader(\"Content-type\", \"application/json\");\n");
+																																																																																																																																											out.append("var data = JSON.stringify({\"id\":\"1\",\"email\":email,\"haslo\":haslo,\"KodP\":kodp,\"PESEL\":PESEL,\"imie\":imie,\"nazwisko\":nazwisko,\"ntel\":nrt,\"miejscowos\":miejscow});\n"); 
+																																																																																																																																													out.append("xhttp.send(data);\n");
+																																																																																																																																															out.append("}\n");
+
+																																																																																																																																																	out.append("function clearDoc() {\n");
+																																																																																																																																																			out.append("document.getElementById(\"demo\").innerHTML = \"<h2>Nothing</h2>\";\n");
+																																																																																																																																																			out.append("}\n");
+																																																																																																																																																					out.append("function myFunction(arr) {\n");
+																																																																																																																																																							out.append("var out = \"\";\n");
+																																																																																																																																																									out.append("var i;\n");
+																																																																																																																																																											out.append("out = arr.imie;\n");
+																																																																																																																																																													out.append("document.getElementById(\"demo\").innerHTML = out;\n");
+																																																																																																																																																															out.append("}\n");
+																																																																																																																																																																	out.append("function btntest_onclick()\n"); 
+																																																																																																																																																																			out.append("{\n");
+																																																																																																																																																																					out.append("window.location.href = \"index.html\";\n");
+																																																																																																																																																																							out.append("}\n");
+																																																																																																																																																																									out.append("</script>\n");
+	
+	
+	
+		
+		return out.toString();
+	}
+
 	public static String client() {
 
 		StringBuffer out = new StringBuffer();
@@ -543,7 +649,8 @@ public class Strona {
 		out.append("xhttp.open(\"POST\", \"Servisant\", true);\n");
 		out.append("xhttp.setRequestHeader(\"Content-type\", \"application/json\");\n");
 
-		out.append(	"var data = JSON.stringify({\"id\":\"1\",\"email\":email,\"haslo\":haslo,\"KodP\":kodp,\"PESEL\":PESEL,\"imie\":imie,\"nazwisko\":nazwisko,\"ntel\":nrt,\"miejscowos\":miejscow,\"stan\":stan});\n");
+		out.append(
+				"var data = JSON.stringify({\"id\":\"1\",\"email\":email,\"haslo\":haslo,\"KodP\":kodp,\"PESEL\":PESEL,\"imie\":imie,\"nazwisko\":nazwisko,\"ntel\":nrt,\"miejscowos\":miejscow,\"stan\":stan});\n");
 		out.append("xhttp.send(data);\n");
 		out.append("}\n");
 
