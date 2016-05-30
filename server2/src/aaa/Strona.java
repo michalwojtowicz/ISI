@@ -66,9 +66,9 @@ public class Strona {
 		out.append("<div id=\"news\">\n");		
 		out.append("<img src=\"reklama.png\">\n");		
 		out.append("</div>\n");		
-		
+		out.append("<div id=\"content\">\n");
 		out.append(tresc);
-		
+		out.append("</div>");
 		out.append("<div id=\"footer\">\n");
 		out.append("@Inøynieria SystemÛw Informacyjnych 2016\n");
 		out.append("</div>\n");
@@ -136,7 +136,7 @@ public class Strona {
 		StringBuffer out = new StringBuffer();
 		
 		//zmodyfikowac!
-		out.append("<div id=\"content\">\n");
+
 		out.append("<center>\n");
 		out.append("<h2>Klient</h2>\n");
 		
@@ -163,7 +163,7 @@ public class Strona {
 		
 		
 		out.append("<font color = \"#EFEFEF\">");
-		out.append("<div id=\"demo\"><h2>Wprowadü dane samochodu</h2></div>\n");
+		out.append("<h2>Wprowadü dane samochodu</h2>\n");
 		out.append("<center>");
 		out.append("numer");
 		out.append("VIN<br><input type=\"text\" id=\"VIN\"><br><br>\n");
@@ -176,7 +176,6 @@ public class Strona {
 		out.append("Kraj pochodzenia<br><input type=\"text\" id=\"kraj\"><br><br>\n");
 		out.append("Przebieg<br><input type=\"text\" id=\"przebieg\"><br><br>\n");
 		out.append("<button type=\"button\"  class=\"button\" onclick=\"loadDoc()\">Dodaj</button>\n");
-		out.append("<div id=\"demo\"><h2></h2></div>\n");
 		out.append("</font>\n");
 		out.append("</center>");
 		out.append("<script>\n");
@@ -194,7 +193,7 @@ public class Strona {
 		out.append("var xhttp = new XMLHttpRequest();\n");    
 		out.append("xhttp.onreadystatechange = function() {\n");   
 		out.append("if (xhttp.status == 200) {\n");    
-		out.append("document.getElementById(\"demo\").innerHTML = xhttp.responseText;\n"); 
+	//	out.append("document.getElementById(\"demo\").innerHTML = xhttp.responseText;\n"); 
 		out.append("}\n");  
 		out.append("};\n");      
 		out.append("xhttp.open(\"POST\", \"users/client\", true);\n");      	
@@ -262,7 +261,7 @@ public class Strona {
 		out.append("var xhttp = new XMLHttpRequest();\n");
 		out.append(" xhttp.onreadystatechange = function() {\n");
 		out.append("if (xhttp.status == 200) {\n");
-		out.append("document.getElementById(\"demo\").innerHTML = xhttp.responseText;\n");
+	//	out.append("document.getElementById(\"demo\").innerHTML = xhttp.responseText;\n");
 		out.append("}\n");
 		out.append("};\n");
 		out.append("xhttp.open(\"POST\", \"users/client\", true);\n");
