@@ -282,34 +282,31 @@ public class Strona {
 		out.append("<input type=\"text\" id=\"haslo\" value=\"2016-02-05\">\n");
 		out.append("<button typtype=\"button\" class=\"button\" onclick=\"loadDoc2()\">Dodaj</button>\n");
 		out.append("<div id =\"content\"> </div>\n");
-		
-		
-		
-		out.append("<input type=\"text\" id=\"model\"><br><br>\n");
-		out.append("<button class=\"button\" type=\"button\" onclick=\"loadDoc()\">Umów wizytê</button>\n");
 		out.append("</font>\n");
-		out.append("<script src=\"jq/jquery-ui-1.11.4.custom/external/jquery/jquery.js\"></script>\n");
-		out.append("<script src=\"jq/jquery-ui-1.11.4.custom/jquery-ui.js\"></script>\n");
+		out.append("<center>\n");
+		out.append("<h3>Podaj date w formacie </h3>\n");
+		
+		
+		out.append("<input type=\"text\" id=\"haslo\" value=\"2016-02-05\">\n");
+		out.append("<button typtype=\"button\" class=\"button\" onclick=\"loadDoc2()\">Dodaj</button>\n");
+		out.append("<div id =\"content\"> </div>\n");
+		out.append("</font></center>\n");
+		
+		
 		out.append("<script>\n");
-		out.append("$(function() {\n");
-		out.append("$( \"#datepicker\" ).datepicker();\n");
-		out.append("});\n");
-		out.append("function loadDoc() {\n");
-		out.append("var Data = document.getElementById(\"data\").value;\n");
-		out.append("var nazwa = document.getElementById(\"nazwa\").value\n");
-		out.append("var model = document.getElementById(\"model\").value;\n");   
+		out.append("function loadDoc2() {\n");
 		out.append("var xhttp = new XMLHttpRequest();\n");
-		out.append(" xhttp.onreadystatechange = function() {\n");
+		out.append("var dodaj = document.getElementById(\"haslo\").value;\n");
+		out.append("xhttp.onreadystatechange = function() {\n");
 		out.append("if (xhttp.status == 200) {\n");
-	//	out.append("document.getElementById(\"demo\").innerHTML = xhttp.responseText;\n");
-		out.append("}\n");
+		out.append("document.getElementById(\"content\").innerHTML = xhttp.responseText;\n");
+		out.append(" }\n");
 		out.append("};\n");
-		out.append("xhttp.open(\"POST\", \"users/client\", true);\n");
-		out.append("xhttp.setRequestHeader(\"Content-type\", \"application/json\");\n");
-		out.append("var data = JSON.stringify({\"id\":\"2\",\"data\":Data,\"nazwa\":nazwa,\"model\":model});\n");
-		out.append("xhttp.send(data);\n");
+		out.append("xhttp.open(\"GET\", \"Servisant?id=4&dodaj=\" + dodaj, true);\n");
+		out.append("xhttp.send();\n");
 		out.append("}\n");
 		out.append("</script>\n");
+		
 		
 		return out.toString();
 	}
