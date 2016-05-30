@@ -211,13 +211,19 @@ public class Strona {
 		out.append("<font color = \"#EFEFEF\">\n");
 		out.append("<h1>Serwisant</h1>\n");
 
-		out.append("<button type=\"button\" class=\"button\" onclick=\"load_home()\">Stworz nowy serwis</button><br><br>\n");
-		out.append("<button type=\"button\" class=\"button\" onclick=\"load_home1()\">Dodaj nowego pracownika</button><br><br>\n");
-		out.append("<button type=\"button\" class=\"button\" onclick=\"loadDoc()\">Sprawdz wszystkie naprawy</button><br><br>\n");
-		out.append("<button type=\"button\" class=\"button\" onclick=\"load_home2()\">Sprawdz samochod po VIN</button><br><br>\n");
-		out.append("<button type=\"button\" class=\"button\" onclick=\"load_home3()\">Dodaj nowa wizyte</button><br><br>\n");
+		out.append(
+				"<button type=\"button\" class=\"button\" onclick=\"load_home()\">Stworz nowy serwis</button><br><br>\n");
+		out.append(
+				"<button type=\"button\" class=\"button\" onclick=\"load_home1()\">Dodaj nowego pracownika</button><br><br>\n");
+		out.append(
+				"<button type=\"button\" class=\"button\" onclick=\"loadDoc()\">Sprawdz wszystkie naprawy</button><br><br>\n");
+		out.append(
+				"<button type=\"button\" class=\"button\" onclick=\"load_home2()\">Sprawdz samochod po VIN</button><br><br>\n");
+		out.append(
+				"<button type=\"button\" class=\"button\" onclick=\"load_home3()\">Dodaj nowa wizyte</button><br><br>\n");
 		out.append("<button type=\"button\" class=\"button\" onclick=\"load_home4()\">Naprawa</button><br><br>\n");
-		out.append("<div id =\"content\" style=\"width:800px;height:800px;border:0px solid;resize:none;overflow:auto;\"> </div>\n");
+		out.append(
+				"<div id =\"content\" style=\"width:800px;height:800px;border:0px solid;resize:none;overflow:auto;\"> </div>\n");
 
 		out.append("<center>\n");
 		out.append("</font>\n");
@@ -231,24 +237,29 @@ public class Strona {
 		out.append("<script>\n");
 
 		out.append("function load_home() {\n");
-		out.append("document.getElementById(\"content\").innerHTML='<object type=\"type/html\"data=\"tSerwis.html\"style=\"width:800px;height:800px;border:0px solid;resize:none;overflow:auto;\"></object>';\n");
+		out.append(
+				"document.getElementById(\"content\").innerHTML='<object type=\"type/html\"data=\"tSerwis.html\"style=\"width:800px;height:800px;border:0px solid;resize:none;overflow:auto;\"></object>';\n");
 		out.append("}\n");
 
 		out.append("function load_home1() {\n");
-		out.append("document.getElementById(\"content\").innerHTML='<object type=\"type/html\"data=\"dodprac.html\"id=\"dupa\"style=\"width:800px;height:800px;border:0px solid;resize:none;overflow:auto;\"></object>';\n");
+		out.append(
+				"document.getElementById(\"content\").innerHTML='<object type=\"type/html\"data=\"dodprac.html\"id=\"dupa\"style=\"width:800px;height:800px;border:0px solid;resize:none;overflow:auto;\"></object>';\n");
 		out.append("}\n");
 
 		out.append("function load_home2() {\n");
-		out.append("document.getElementById(\"content\").innerHTML='<object type=\"type/html\"data=\"cVIN.html\"id=\"dupa1\"style=\"width:800px;height:800px;border:0px solid;resize:none;overflow:auto;\"></object>';\n");
+		out.append(
+				"document.getElementById(\"content\").innerHTML='<object type=\"type/html\"data=\"cVIN.html\"id=\"dupa1\"style=\"width:800px;height:800px;border:0px solid;resize:none;overflow:auto;\"></object>';\n");
 		out.append("}\n");
 
 		out.append("function load_home3() {\n");
-		out.append("document.getElementById(\"content\").innerHTML='<object type=\"type/html\"data=\"addwizy.html\"id=\"dupa2\"style=\"width:800px;height:800px;border:0px solid;resize:none;overflow:auto;\"></object>';\n");
+		out.append(
+				"document.getElementById(\"content\").innerHTML='<object type=\"type/html\"data=\"addwizy.html\"id=\"dupa2\"style=\"width:800px;height:800px;border:0px solid;resize:none;overflow:auto;\"></object>';\n");
 
 		out.append("}\n");
 
 		out.append("function load_home4() {\n");
-		out.append("document.getElementById(\"content\").innerHTML='<object type=\"type/html\"data=\"napraw.html\"id=\"dupa3\"style=\"width:800px;height:800px;border:0px solid;resize:none;overflow:auto;\"></object>';\n");
+		out.append(
+				"document.getElementById(\"content\").innerHTML='<object type=\"type/html\"data=\"napraw.html\"id=\"dupa3\"style=\"width:800px;height:800px;border:0px solid;resize:none;overflow:auto;\"></object>';\n");
 
 		out.append("}\n");
 
@@ -356,10 +367,64 @@ public class Strona {
 		out.append("date1.setDate('" + dzien + "')\n");
 		out.append("var date2 = new Date()\n");
 		out.append("date2.setDate('" + dzien2 + "')\n");
-		out.append("return [true, date1 && ((date.getTime() == date1.getTime()) || (date.getDate() == date2.getDate() || date.getDate() == date1.getDate())) ? \"dp-highlight\" : \"\"];\n");
+		out.append(
+				"return [true, date1 && ((date.getTime() == date1.getTime()) || (date.getDate() == date2.getDate() || date.getDate() == date1.getDate())) ? \"dp-highlight\" : \"\"];\n");
 		out.append("}\n");
 		out.append("});\n");
 		out.append("});\n");
+		out.append("</script>\n");
+
+		return out.toString();
+	}
+
+	public static String napraw() {
+
+		StringBuffer out = new StringBuffer();
+
+		out.append("font color = \"#EFEFEF\">\n");
+		out.append("<center>\n");
+		out.append("<h3>Naprawa</h3>\n");
+		out.append("Numer naprawy<br>\n");
+		out.append("<input type=\"text\" id=\"id\" value=\"\"><br><br>\n");
+		out.append("Typ naprawy<br>\n");
+		out.append("<input type=\"text\" id=\"typ\" value=\"\"><br><br>\n");
+		out.append("Koszt<br>\n");
+		out.append("<input type=\"text\" id=\"koszt\" value=\"\"><br>\n");
+		out.append("<button onclick=\"myFunction()\">Wyœwietl samochody do naprawy</button>\n");
+		out.append("<button onclick=\"myFunction2()\">Napraw</button>\n");
+		out.append("<div id =\"content\"> </div>\n");
+		out.append("</font>\n");
+		out.append("</center>\n");
+
+		out.append("<script>\n");
+		out.append("function myFunction() {\n");
+
+		out.append("var xhttp = new XMLHttpRequest();\n");
+		out.append("xhttp.onreadystatechange = function() {\n");
+		out.append("if (xhttp.status == 200) {\n");
+		out.append("document.getElementById(\"content\").innerHTML = xhttp.responseText;\n");
+		out.append("}\n");
+		out.append("};\n");
+
+		out.append("xhttp.open(\"GET\", \"Servisant?id=5\", true);\n");
+		out.append("xhttp.send();\n");
+		out.append("}\n");
+		out.append("function myFunction2() {\n");
+		out.append("var id = document.getElementById(\"id\").value;\n");
+		out.append("var typ = document.getElementById(\"typ\").value;\n");
+		out.append("var koszt = document.getElementById(\"koszt\").value;\n");
+		out.append("var xhttp = new XMLHttpRequest();\n");
+		out.append("xhttp.onreadystatechange = function() {\n");
+		out.append("if (xhttp.status == 200) {\n");
+
+		out.append("document.getElementById(\"demo\").innerHTML = xhttp.responseText;\n");
+		out.append("}\n");
+		out.append("};\n");
+		out.append("xhttp.open(\"POST\", \"Servisant\", true);\n");
+		out.append("xhttp.setRequestHeader(\"Content-type\", \"application/json\");\n");
+		out.append("var data = JSON.stringify({\"id\":\"2\",\"ida\":id,\"typ\":typ,\"koszt\":koszt});\n");
+		out.append("xhttp.send(data);\n");
+		out.append("}\n");
 		out.append("</script>\n");
 
 		return out.toString();
@@ -441,8 +506,8 @@ public class Strona {
 		out.append("};\n");
 		out.append("xhttp.open(\"POST\", \"Servisant\", true);\n");
 		out.append("xhttp.setRequestHeader(\"Content-type\", \"application/json\");\n");
-		
-		out.append("var data = JSON.stringify({\"id\":\"1\",\"email\":email,\"haslo\":haslo,\"KodP\":kodp,\"PESEL\":PESEL,\"imie\":imie,\"nazwisko\":nazwisko,\"ntel\":nrt,\"miejscowos\":miejscow,\"stan\":stan});\n");
+
+		out.append(	"var data = JSON.stringify({\"id\":\"1\",\"email\":email,\"haslo\":haslo,\"KodP\":kodp,\"PESEL\":PESEL,\"imie\":imie,\"nazwisko\":nazwisko,\"ntel\":nrt,\"miejscowos\":miejscow,\"stan\":stan});\n");
 		out.append("xhttp.send(data);\n");
 		out.append("}\n");
 
