@@ -80,57 +80,6 @@ public class Strona {
 		return out.toString();
 	}
 	
-//	public static String getClientHtml(String tresc, String css){
-//		StringBuffer out = new StringBuffer();
-//		out.append("<!DOCTYPE HTML>\n");
-//		out.append("<html lang=\"pl\">\n");
-//		out.append("<head>\n");
-//		out.append("<meta charset=\"utf-8\" />\n");
-//		out.append("<title>Serwis ASO - M4U</title>\n");
-//		out.append("<meta name=\"description\" content=\"Serwis wspomagaj¹cy pracê serwisu\" />\n");	
-//		out.append("<meta name=\"keywords\" content=\"najlepszy serwis aso, zobacz\" />\n");	
-//		out.append("<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />\n");	
-//		out.append("<link  type=\"text/css\"rel=\"stylesheet\" media=\"screen and (min-device-width: 481px)\" href=\"css/style.css\" />\n");	
-//		out.append("<link type=\"text/css\" rel=\"stylesheet\" media=\"only screen and (max-device-width: 480px)\" href=\"css/style-mobile.css\" />\n");	
-//		out.append("<link rel=\"stylesheet\" media=\"screen and (-webkit-device-pixel-ratio:0.75)\" href=\"css/style-mobile.css\" />\n");	
-//		out.append("<link rel=\"stylesheet\" href=\"css/style-mobile.css\" media=\"handheld\" type=\"text/css\" />\n");	
-//		
-//		out.append(css);
-//		
-//		out.append("</head>\n");	
-//		out.append("<body background=\"tlo.jpg\" bgproperties=\"fixed\">\n");
-//		out.append("<font color = \"#EFEFEF\" size = 5 >\n");
-//		out.append("<div id=\"container\" top-margin=\"10px\">\n");
-//		out.append("<div id=\"logo\">\n");	
-//		out.append("<img src=\"logo.png\">\n");		
-//		out.append("</div>\n");		
-//		out.append("<div id=\"con\">\n");		
-//		out.append("<div id=\"nav\">\n");		
-//		out.append("<center>\n");		
-//		out.append("<br>\n");
-//		//mozliwosc dalszej modyfikacji
-//		out.append("<a href=\"strona.html\" class=\"button\">Strona g³ówna</a><br><br><br>\n");				
-//		out.append("<a href=\"index.html\" class=\"button\">Ekran logowania</a><br><br><br>\n");				
-//		out.append("<a href=\"Client.html\" class=\"button\">Powrót</a><br><br><br>\n");				
-//		out.append("</center>\n");				
-//		out.append("</div>\n");		
-//		out.append("<div id=\"news\">\n");		
-//		out.append("<img src=\"reklama.png\">\n");		
-//		out.append("</div>\n");		
-//		
-//		out.append(tresc);
-//		
-//		out.append("<div id=\"footer\">\n");
-//		out.append("@In¿ynieria Systemów Informacyjnych 2016\n");
-//		out.append("</div>\n");
-//		out.append("</div>\n");
-//		out.append("</font>\n");
-//		out.append("</body>\n");
-//		out.append("</html>\n");
-//		
-//		return out.toString();
-//	}
-	
 	public static String glowna(){
 		
 		StringBuffer out = new StringBuffer();
@@ -156,12 +105,7 @@ public class Strona {
 	public static String dodajSamochody(){
 		
 		StringBuffer out = new StringBuffer();
-		
-		//SmsSender sms= new SmsSender("aaa","603955840");
-		ClientDb db=new ClientDb();
-		String numer=db.getNumery();
-		
-		
+	
 		out.append("<font color = \"#EFEFEF\">");
 		out.append("<h2>WprowadŸ dane samochodu</h2>\n");
 		out.append("<center>");

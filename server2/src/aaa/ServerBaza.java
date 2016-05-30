@@ -13,7 +13,7 @@ import com.mysql.jdbc.Statement;
 import com.sun.xml.internal.bind.CycleRecoverable.Context;
 
 public class ServerBaza {
-	private Connection connect;
+	private static Connection connect;
 	
 	public ServerBaza() {
 		// TODO Auto-generated constructor stub
@@ -322,6 +322,21 @@ public class ServerBaza {
 		stm.executeUpdate(sql);
 		sql = "UPDATE naprawa SET Koszt='"+koszt+"'WHERE ID_Naprawy='"+id+"';";
 		stm.executeUpdate(sql);
+	}
+	
+	public static String getNumerTelefonu() throws SQLException{
+		String sql = "select Nr_Telefonu from klient;";
+		String wynik = "";
+		System.err.println("halo");
+		Statement stm = (Statement) connect.createStatement();
+		ResultSet result = stm.executeQuery(sql);
+		if(!result.next()){
+			return "blad";
+		}else{
+			wynik += result.getString(1);
+			System.err.println(wynik);
+			return wynik;
+		}		
 	}
 	
 }

@@ -117,33 +117,4 @@ public class ClientDb extends TestCase{
 			e.printStackTrace();
 		}
 	}
-public String getNumery(){
-		
-		String sql = "";
-		String wynik = "";
-		Statement stm;
-		try {
-			stm = (Statement) con.createStatement();
-			sql="SELECT Nr_Telefonu as Numer FROM klient";
-			ResultSet result = stm.executeQuery(sql);
-			//while(result.next()){
-				wynik += result.getString("Numer") + ";";
-				
-			//}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-		}
-		
-		return wynik;
-	}
-	
-//	public static void main(String[] arg) throws SQLException{
-//		
-//		ClientDb proba = new ClientDb();
-//		proba.init();
-//		proba.rejestracja("cos1","cos2" , "cos3", "3456215", "login", "34-600","1", "cos8", "cos9");
-//		System.out.println(proba.servletLogic("cos9", "1"));
-//	}
 }
