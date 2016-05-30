@@ -14,7 +14,7 @@ public class ClientDb extends TestCase{
 	ServerBaza bazaDanych;
 	
 	public void init(){
-		String baza = "jdbc:mysql://127.0.0.1/serwis_aso_m4u";
+		String baza = "jdbc:mysql://127.0.0.1:3306/serwis_aso_m4u";
     	try {
     		Class.forName("com.mysql.jdbc.Driver").newInstance();
     		con = (Connection) DriverManager.getConnection(baza,"root","Haslo123");
