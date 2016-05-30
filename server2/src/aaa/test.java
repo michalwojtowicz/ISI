@@ -8,8 +8,8 @@ public class test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ClientDb db=new ClientDb();
-		String numer=db.getNumery();
-		System.out.println(numer);
+		//String numer=db.getNumery();
+		//System.out.println(numer);
 		
 
 	}

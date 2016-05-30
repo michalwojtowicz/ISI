@@ -14,10 +14,10 @@ public class ClientDb extends TestCase{
 	ServerBaza bazaDanych;
 	
 	public void init(){
-		String baza = "jdbc:mysql://127.0.0.1/aso";
+		String baza = "jdbc:mysql://127.0.0.1/serwis_aso_m4u";
     	try {
     		Class.forName("com.mysql.jdbc.Driver").newInstance();
-    		con = (Connection) DriverManager.getConnection(baza,"root","");
+    		con = (Connection) DriverManager.getConnection(baza,"root","Haslo123");
     		bazaDanych = new ServerBaza(con);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

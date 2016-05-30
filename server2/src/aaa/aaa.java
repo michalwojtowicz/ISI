@@ -41,7 +41,7 @@ public class aaa extends HttpServlet {
     }
     public void init() {
     	//connect
-    	    String baza = "jdbc:mysql://127.0.0.1:3306/m4u";
+    	    String baza = "jdbc:mysql://127.0.0.1:3306/serwis_aso_m4u";
     		 Context initContext;
 			try {
 				initContext = (Context) new InitialContext();
