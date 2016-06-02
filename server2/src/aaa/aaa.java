@@ -28,41 +28,45 @@ import com.sun.xml.internal.bind.CycleRecoverable.Context;
  */
 public class aaa extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
 	String mesage;
 	ServerBaza a;
 	DataSource dataSource;
-    public aaa() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-    public void init() {
-    	//connect
-    	    String baza = "jdbc:mysql://127.0.0.1:3306/serwis_aso_m4u";
-    		 Context initContext;
-			try {
-				initContext = (Context) new InitialContext();
-				Context envContext  = (Context)((InitialContext) initContext).lookup("java:/comp/env");
-	             dataSource = (DataSource)((InitialContext) envContext).lookup("jdbc/jdbcConect");
-			} catch (NamingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    }
-    
-    public void destroy() {
-    	//disconnect
-    }
+
+	public aaa() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public void init() {
+		// connect
+		String baza = "jdbc:mysql://127.0.0.1:3306/serwis_aso_m4u";
+		Context initContext;
+		try {
+			initContext = (Context) new InitialContext();
+			Context envContext = (Context) ((InitialContext) initContext).lookup("java:/comp/env");
+			dataSource = (DataSource) ((InitialContext) envContext).lookup("jdbc/jdbcConect");
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void destroy() {
+		// disconnect
+	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String idStr = request.getParameter("id");
-		if(idStr == null) {
+		if (idStr == null) {
 			return;
 		}
 		PrintWriter out = response.getWriter();
@@ -71,35 +75,37 @@ public class aaa extends HttpServlet {
 		Connection connection;
 		try {
 			connection = (Connection) ((Statement) dataSource).getConnection();
-			 a = new ServerBaza(connection);
-		     
+			a = new ServerBaza(connection);
+
 		} catch (SQLException e) {
 			out.println("dupa");
 		}
-      try {
-		S =  a.login("dupa7","dupa6");
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-		
+		try {
+			S = a.login("dupa7", "dupa6");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		response.setContentType("text/json");
-		out.println(getStudentInfo(id,S));
-	
+		out.println(getStudentInfo(id, S));
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	private JSONObject getStudentInfo(int id,String S) {
+	private JSONObject getStudentInfo(int id, String S) {
 		JSONObject obj = new JSONObject();
-		
-		if(id == 0) {
+
+		if (id == 0) {
 			obj.put("imie", S);
 			obj.put("nazwisko", "Sikora");
 			JSONArray array = new JSONArray();
@@ -116,7 +122,7 @@ public class aaa extends HttpServlet {
 			array.add(2);
 			obj.put("oceny", array);
 		}
-		
+
 		return obj;
 	}
 
