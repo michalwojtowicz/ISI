@@ -9,16 +9,16 @@ import com.mysql.jdbc.Statement;
 
 import junit.framework.TestCase;
 
-public class ClientDb extends TestCase{
+public class ClientDb extends TestCase {
 	Connection con;
 	ServerBaza bazaDanych;
-	
-	public void init(){
-		String baza = "jdbc:mysql://127.0.0.1/aso";
-    	try {
-    		Class.forName("com.mysql.jdbc.Driver").newInstance();
-    		con = (Connection) DriverManager.getConnection(baza,"root","");
-    		bazaDanych = new ServerBaza(con);
+
+	public void init() {
+		String baza = "jdbc:mysql://127.0.0.1:3306/serwis_aso_m4u";
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			con = (Connection) DriverManager.getConnection(baza, "root", "Haslo123");
+			bazaDanych = new ServerBaza(con);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -33,39 +33,42 @@ public class ClientDb extends TestCase{
 			e.printStackTrace();
 		}
 	}
-	
-	public void rejestracja(String imie,String nazwisko, String PESEL, String numerTel, String miejscowosc, String KodPocztowy,String haslo,String StatusKlienta,String Email) throws SQLException{
+
+	public void rejestracja(String imie, String nazwisko, String PESEL, String numerTel, String miejscowosc,
+			String KodPocztowy, String haslo, String StatusKlienta, String Email) throws SQLException {
 		System.err.println("rejestracja");
 		String sql;
 		Statement stm = (Statement) con.createStatement();
-		sql = "insert into klient (PESEL, Nazwisko, Imie, Miejscowosc, Kod_Pocztowy, Nr_Telefonu, Email, Haslo) values ('" + PESEL + "', '" + nazwisko +"','"+imie + "', '" + miejscowosc + "', " + KodPocztowy + ", "+numerTel + ", '" + Email+"', '"+ haslo + "');";
-		stm.executeUpdate(sql);	
+		sql = "insert into klient (PESEL, Nazwisko, Imie, Miejscowosc, Kod_Pocztowy, Nr_Telefonu, Email, Haslo) values ('"
+				+ PESEL + "', '" + nazwisko + "','" + imie + "', '" + miejscowosc + "', " + KodPocztowy + ", "
+				+ numerTel + ", '" + Email + "', '" + haslo + "');";
+		stm.executeUpdate(sql);
 	}
-	
-	public String getWolneTerminy(){
-		
+
+	public String getWolneTerminy() {
+
 		String sql = "SELECT DAY(Data_Wizyty) as Dzien_Wizyty FROM kalendarz_wizyt WHERE MONTH(Data_Wizyty) = MONTH( now())";
 		String wynik = "";
 		Statement stm;
 		try {
 			stm = (Statement) con.createStatement();
 			ResultSet result = stm.executeQuery(sql);
-			while(result.next()){
+			while (result.next()) {
 				wynik += result.getString("Dzien_Wizyty") + ";";
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return wynik;
 	}
-	
-	public boolean servletLogic(boolean user, String login, String password){
-		
+
+	public boolean servletLogic(boolean user, String login, String password) {
+
 		String odp;
 		Contener pack;
-		if(user){
+		if (user) {
 			try {
 				odp = bazaDanych.login(login, password);
 			} catch (SQLException e) {
@@ -74,25 +77,25 @@ public class ClientDb extends TestCase{
 				System.out.println("blad bazy");
 				return false;
 			}
-			if(!odp.equals("koniec")){
+			if (!odp.equals("koniec")) {
 				return true;
-			}else{
+			} else {
 				System.out.println("brak uzytkownika");
 				return false;
 			}
-		}else {
+		} else {
 			try {
 				pack = bazaDanych.logS(login, password);
 				odp = pack.tab[0];
-				if(!odp.equals("koniec")){
-					if(odp.equals("szef")){
+				if (!odp.equals("koniec")) {
+					if (odp.equals("szef")) {
 						System.out.println("serwisant");
-						return  true;
-					}else{
+						return true;
+					} else {
 						System.out.println("pracownik");
 						return true;
 					}
-				}else{
+				} else {
 					System.out.println("brak uzytkownika");
 					return false;
 				}
@@ -104,26 +107,31 @@ public class ClientDb extends TestCase{
 			}
 		}
 	}
-	
-	public void removeFromDataBase(String nick){
+
+	public void removeFromDataBase(String nick) {
 		String sql;
 		Statement stm;
 		try {
 			stm = (Statement) con.createStatement();
-			sql = "DELETE FROM klient WHERE PESEL = '"+nick+"';";
+			sql = "DELETE FROM klient WHERE PESEL = '" + nick + "';";
 			stm.executeUpdate(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
-	
-//	public static void main(String[] arg) throws SQLException{
-//		
-//		ClientDb proba = new ClientDb();
-//		proba.init();
-//		proba.rejestracja("cos1","cos2" , "cos3", "3456215", "login", "34-600","1", "cos8", "cos9");
-//		System.out.println(proba.servletLogic("cos9", "1"));
-//	}
+
+	public String getNumerTelefonu() throws SQLException {
+		String sql = "select Nr_Telefonu from klient;";
+		String wynik = "";
+		Statement stm;
+
+		stm = (Statement) con.createStatement();
+		ResultSet result = stm.executeQuery(sql);
+		while (result.next()) {
+			wynik += result.getString(1) + ";";
+
+		}
+		return wynik;
+	}
 }
